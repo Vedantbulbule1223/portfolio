@@ -1,0 +1,64 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply bg-ink text-bone font-body antialiased;
+  }
+  ::selection {
+    @apply bg-copper/30 text-bone;
+  }
+  :focus-visible {
+    outline: 2px solid #e08f4f;
+    outline-offset: 3px;
+  }
+}
+
+@layer components {
+  /* Blueprint corner brackets — evokes ARGO float coordinate plots / spec sheets */
+  .blueprint {
+    position: relative;
+  }
+  .blueprint::before,
+  .blueprint::after {
+    content: '';
+    position: absolute;
+    width: 14px;
+    height: 14px;
+    border-color: rgba(201, 121, 63, 0.55);
+    pointer-events: none;
+  }
+  .blueprint::before {
+    top: -1px;
+    left: -1px;
+    border-top: 1.5px solid;
+    border-left: 1.5px solid;
+  }
+  .blueprint::after {
+    bottom: -1px;
+    right: -1px;
+    border-bottom: 1.5px solid;
+    border-right: 1.5px solid;
+  }
+
+  .coord {
+    @apply font-mono text-[11px] tracking-wide text-muted;
+  }
+
+  .section-rule {
+    @apply border-t border-line-soft;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
